@@ -23,5 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['auth']], function() { 
     Route::get('dashboard', 'AdminController@index')->name('index');
+    Route::get('add-product', 'ProductController@create')->name('add-product');
+    Route::post('store-product', 'ProductController@store')->name('store-product');
 
 });
