@@ -15,3 +15,13 @@ Route::get('/', function () {
     return view('primabelle');
    // return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['auth']], function() { 
+    Route::get('dashboard', 'AdminController@index')->name('index');
+
+});

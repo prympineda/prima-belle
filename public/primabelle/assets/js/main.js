@@ -6,7 +6,44 @@
         meanScreenWidth: '767',
         meanMenuContainer: '.mobile-menu-area .mobile-menu',
     });
+
+
+    $('.nav-home').click(function(e){
+        e.preventDefault();
+        var target = $('header');
+        if(target.length){
+          var scrollTo = target.offset().top;
+          $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
+        }
+      });
     
+      $('.nav-shop').click(function(e){
+        e.preventDefault();
+        var target = $('#shop');
+        if(target.length){
+          var scrollTo = target.offset().top;
+          $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
+        }
+      });
+
+      $('.nav-new_arrivals').click(function(e){
+        e.preventDefault();
+        var target = $('#new_arrivals');
+        if(target.length){
+          var scrollTo = target.offset().top;
+          $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
+        }
+      });
+
+      
+      $('.nav-sale').click(function(e){
+        e.preventDefault();
+        var target = $('#sale');
+        if(target.length){
+          var scrollTo = target.offset().top;
+          $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
+        }
+      });
     
     /*====== sidebarCart ======*/
     function sidebarCart() {
@@ -457,7 +494,7 @@
      ScrollUp
     ---------------------------- */
     $.scrollUp({
-        scrollText: '<i class="ion-arrow-up-c"></i>',
+        scrollText: '<i class="fas fa-arrow-up"></i>',
         easingType: 'linear',
         scrollSpeed: 900,
         animation: 'fade'
