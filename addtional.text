@@ -1,0 +1,10 @@
+swal
+if ($request->session()->has('error')) {
+            $error = $request->session()->get('error');
+
+            if (!is_string($error)) {
+                $error = $this->getErrors($error->getMessages());
+            }
+
+            alert()->error($error)->toHtml();
+        }

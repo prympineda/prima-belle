@@ -165,4 +165,8 @@ class ProductController extends Controller
         $birks = Product::where('sc_id', 5)->where('is_active', 1)->get();
         return view('product.birks', compact('birks'));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5826472d6203f4a42fde211a0e09dcfb6e559632

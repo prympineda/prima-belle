@@ -22,9 +22,9 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->integer('size')->unsigned();
             $table->integer('price')->unsigned();
-            $table->integer('old_price');
+            $table->integer('old_price')->nullable();
             $table->integer('stock')->unsigned();
-            $table->integer('is_sale');
+            $table->integer('is_sale')->nullable();
             $table->string('ribbon_tag')->nullable();
             $table->string('photo_name');
             $table->timestamps();
