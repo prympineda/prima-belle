@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 11, 2020 at 03:13 PM
+-- Generation Time: Feb 12, 2020 at 03:37 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activity_logs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '48c86574-530a-4f31-864e-b5e89ae45bc6',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '05212c49-8d1a-4644-a0b0-862b5526a72d',
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `action` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
@@ -76,7 +76,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `notifications` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'e21d1969-f5ad-4285-8f2b-5392bdf286a9',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '2246605a-14ae-408a-9628-1bc9d5cd0d95',
   `status` int(11) NOT NULL DEFAULT '1',
   `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `notifications` (
 
 CREATE TABLE `notification_statuses` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '9cbe382b-41c1-41a0-9fb1-0c69640b9121',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'c3a859c5-1b14-4942-9612-c7bb19f5c87d',
   `notif_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
@@ -109,7 +109,7 @@ CREATE TABLE `notification_statuses` (
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '4917c755-1fd2-447c-a98a-a7fcb94d3d40',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '9f4d348d-a151-4ca9-b497-543e03a1d670',
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED NOT NULL,
@@ -143,22 +143,33 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '612d21b9-2c19-495c-b162-184326bc2c04',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '62e27951-6610-4269-86c3-4bad4f56818c',
   `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT '1',
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `size` int(10) UNSIGNED NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
-  `old_price` int(11) NOT NULL,
+  `old_price` int(11) DEFAULT NULL,
   `stock` int(10) UNSIGNED NOT NULL,
-  `is_sale` int(11) NOT NULL,
+  `is_sale` int(11) DEFAULT NULL,
   `ribbon_tag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `sc_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `uid`, `code`, `name`, `is_active`, `description`, `size`, `price`, `old_price`, `stock`, `is_sale`, `ribbon_tag`, `photo_name`, `created_at`, `updated_at`, `sc_id`) VALUES
+(24, '7efa92a8-9d67-4a25-aae1-39cfbe0f5fcc', 'ds 1', 'doll shoes 1', 1, 'doll shoes 1', 7, 350, NULL, 4, NULL, 'NEW', '158151585185100969_1476899819131362_7811180734026088448_o.jpg', '2020-02-12 05:57:31', '2020-02-12 05:57:31', 3),
+(25, 'd45793cc-71f1-4344-81ce-14be5aa9eb53', 'ds 2', 'doll shoes 2', 1, 'doll shoes 2', 8, 370, 420, 3, NULL, NULL, '158151800782112640_1458995130921831_5653141667025256448_o.jpg', '2020-02-12 06:33:27', '2020-02-12 06:33:27', 3),
+(26, 'f4f72400-c587-4c34-8176-479a65fcb77d', 'ds 3', 'doll shoes 3', 1, 'doll shoes 3', 7, 320, NULL, 0, NULL, 'Sale', '1581518196doll_shoes_4.jpg', '2020-02-12 06:36:36', '2020-02-12 06:36:36', 3),
+(27, '5535d6b4-1a32-4810-bfd6-7aea5489a5c6', 'ds 4', 'doll shoes 4', 1, 'doll shoes 4', 8, 340, NULL, 5, NULL, NULL, '1581518298doll_shoes_3.jpg', '2020-02-12 06:38:18', '2020-02-12 06:38:18', 3),
+(28, '860b16c7-30da-43f2-9d88-af19237ded7d', 'ds 5', 'doll shoes 5', 1, 'doll shoes 5', 8, 350, NULL, 2, NULL, NULL, '158151899984348840_1476899505798060_5746676558559444992_o.jpg', '2020-02-12 06:49:59', '2020-02-12 06:49:59', 3);
 
 -- --------------------------------------------------------
 
@@ -168,7 +179,7 @@ CREATE TABLE `products` (
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1e106726-f835-40e1-9880-745ff336bcbe',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3f958f6a-170d-4625-a204-d081887a5c86',
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -179,8 +190,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `uid`, `name`, `created_at`, `updated_at`) VALUES
-(1, '61e9d214-dc6d-4804-8e27-e452b2241b09', 'administrator', NULL, NULL),
-(2, 'b05a4180-7184-44b8-b0b6-2d11ad112d6d', 'user', NULL, NULL);
+(1, 'e0f96ff2-ff84-469b-b603-55e627be954b', 'administrator', NULL, NULL),
+(2, '0ab1fa6e-3a5b-49b5-a4f7-f384f87c65e6', 'user', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -190,7 +201,7 @@ INSERT INTO `roles` (`id`, `uid`, `name`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `shoe_categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '65b309c9-4af9-4b77-9fe0-6775e6dcb966',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '70a12540-4cd2-4326-b876-14ccf79ce025',
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT '1',
   `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -203,11 +214,11 @@ CREATE TABLE `shoe_categories` (
 --
 
 INSERT INTO `shoe_categories` (`id`, `uid`, `name`, `is_active`, `note`, `created_at`, `updated_at`) VALUES
-(1, 'cebe21d9-adca-45ca-86b3-20463e6a82e6', '2 Inches Heels', 1, NULL, NULL, NULL),
-(2, '8673012a-d494-4052-8a38-117399c7542d', 'Half Inch Heels', 1, NULL, NULL, NULL),
-(3, '2d9c50df-bb8f-4774-a52b-b12571e2d38a', 'Doll Shoes', 1, NULL, NULL, NULL),
-(4, '69a2de73-46bf-4617-99a5-016e61b495df', 'Mules', 1, NULL, NULL, NULL),
-(5, 'd9dd9a96-7854-476b-af89-c584e827af04', 'Birks', 1, NULL, NULL, NULL);
+(1, '93f9e34c-cb8d-4043-b4c6-b7f70f382002', '2 Inches Heels', 1, NULL, NULL, NULL),
+(2, 'ba622264-097a-4970-a625-5934f9d3e535', 'Half Inch Heels', 1, NULL, NULL, NULL),
+(3, 'e85cac6c-e2e2-43aa-8fcb-d163ddcc66f9', 'Doll Shoes', 1, NULL, NULL, NULL),
+(4, '7ec99fcb-6058-4c60-a87d-f83717ddd87d', 'Mules', 1, NULL, NULL, NULL),
+(5, '4eebcbac-e065-4ffc-bfbb-6eb01eaa3b4c', 'Birks', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -217,7 +228,7 @@ INSERT INTO `shoe_categories` (`id`, `uid`, `name`, `is_active`, `note`, `create
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'e4e46d65-3404-43ac-a5c1-6427fa4e25bf',
+  `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'f6e23fa6-a6df-4417-8300-d0d4defc5e01',
   `is_active` int(11) NOT NULL DEFAULT '1',
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -234,8 +245,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uid`, `is_active`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_id`) VALUES
-(1, 'adddb17d-ec01-4147-952f-9c3cf25f70ac', 1, 'Prym', 'prym@prima-belle.com', NULL, '$2y$10$cw7Hk605znfK39/GE032aeHad.LVorHahi3ooRXTXxMwOR5CysQLq', NULL, NULL, NULL, 1),
-(2, 'c352d218-b943-4ac2-b13b-c8c528658f7f', 1, 'Khaliza', 'khaliza@prima-belle.com', NULL, '$2y$10$O1TkQ7mfysMoACPNoWnH4e0IZAgvSsPCv3Awtn1ghlXM.sJkpIVtW', NULL, NULL, NULL, 2);
+(1, 'abd652b6-fa7f-439d-9f9a-2eb78575c959', 1, 'Prym', 'prym@prima-belle.com', NULL, '$2y$10$eoFfcqqK6/fK004epN5syOOQoW6Pvs1ch1QNddABOUTxHjGw5WjOy', NULL, NULL, NULL, 1),
+(2, '6a330ce7-9fd9-4283-92f9-e7caf9faf014', 1, 'Khaliza', 'khaliza@prima-belle.com', NULL, '$2y$10$PqD4CufXH.n4BXf8k8P.3eWLriTLn8udMbngfmj5cCwangTA.0AqC', NULL, NULL, NULL, 2);
 
 --
 -- Indexes for dumped tables
@@ -348,7 +359,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `roles`

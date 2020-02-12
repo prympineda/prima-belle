@@ -194,8 +194,12 @@
                             <i class="fas fa-money-bill"></i><span class="nav-text"> Product</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href=" {{route('admin.view-products')}} ">View Products</a></li>
                             <li><a href=" {{route('admin.add-product')}} ">Add Product</a></li>
+                            <li><a href=" {{route('admin.view-mules')}} ">Mules</a></li>
+                            <li><a href=" {{route('admin.view-doll-shoes')}} ">Doll Shoes</a></li>
+                            <li><a href=" {{route('admin.view-half-inch')}} ">Half Inch Heels</a></li>
+                            <li><a href=" {{route('admin.view-two-inches')}} ">2 Inches Heels</a></li>
+                            <li><a href=" {{route('admin.view-birks')}} ">Birks</a></li>
                         </ul>
                     </li>
                 </ul>

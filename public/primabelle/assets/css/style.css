@@ -950,6 +950,8 @@ a.slider-btn:hover::before {
 .product-img {
     overflow: hidden;
     position: relative;
+    min-width: 270px;
+    /* max-height: 326px; */
 }
 .product-img img {
     width: 100%;
@@ -1413,7 +1415,7 @@ a.slider-btn:hover::before {
     flex: 0 0 320px;
 }
 .quick-view-tab-content .tab-pane > img {
-    flex: 0 0 320px;
+    flex: 0 0 270px;
 }
 .quick-view-list a img {
     flex: 0 0 100px;

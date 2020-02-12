@@ -243,21 +243,26 @@
                             <h4>Best Seller</h4>
                         </a>
                     </div> -->
+                 
                     <div class="tab-content">
                         <div class="tab-pane active" id="home1" role="tabpanel">
                             <div class="row">
+                                @foreach ($doll_shoes as $ds)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="product-wrapper mb-45">
                                         <div class="product-img">
-                                            <a href="#" data-toggle="modal" data-target="#exampleModal">
-                                                <img src="primabelle/assets/img/product/1.jpg" alt="">
+                                            <a>
+                                            <img src="images/{{ $ds->photo_name }}" alt="">
                                             </a>
-                                            <!-- <span>30% off</span> -->
-                                         
+                                            @if ($ds->ribbon_tag != null)
+                                                    <span> {{$ds->ribbon_tag}} </span>
+                                            @endif
+                                            
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">Item 1</a></h4>
-                                            <h4 class="text-muted">Size: <span> 7 / </span> Stock: <span> 2</span></h4>
+                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#"> {{ucwords($ds->name)}} </a></h4>
+                                            
+                                            <h4 class="text-muted">Size: <span> {{$ds->size}} @if ($ds->stock != 0) /  </span> Stock: <span> {{$ds->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
                                                 <i class="ion-ios-star"></i>
                                                 <i class="ion-ios-star"></i>
@@ -266,15 +271,23 @@
                                                 <i class="ion-ios-star-outline"></i>
                                             </div> -->
                                             <div class="product-price">
-                                                <span class="old">$22.00</span>
-                                                <span>$19.00</span>
+                                                @if ($ds->old_price != null)
+                                                    <span class="old"> P{{$ds->old_price}} </span>
+                                                @endif
+                                                
+                                                <span>P{{$ds->price}}</span>
+                                                @if ($ds->stock == 0) 
+                                                    <span class="text-danger">Sold Out</span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
+                  
                 </div>
             </div>
         </section>
@@ -548,14 +561,9 @@
                                 <div class="quick-view-learg-img">
                                     <div class="quick-view-tab-content tab-content">
                                         <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                            <img src="primabelle/assets/img/quick-view/l1.jpg" alt="">
+                                            <img src="primabelle/assets/img/product/1.jpg" alt="">
                                         </div>
-                                        <div class="tab-pane fade" id="modal2" role="tabpanel">
-                                            <img src="primabelle/assets/img/quick-view/l2.jpg" alt="">
-                                        </div>
-                                        <div class="tab-pane fade" id="modal3" role="tabpanel">
-                                            <img src="primabelle/assets/img/quick-view/l3.jpg" alt="">
-                                        </div>
+                                       
                                     </div>
                                 </div>
                                
