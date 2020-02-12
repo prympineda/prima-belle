@@ -25,5 +25,6 @@ Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['a
     Route::get('dashboard', 'AdminController@index')->name('index');
     Route::get('add-product', 'ProductController@create')->name('add-product');
     Route::post('store-product', 'ProductController@store')->name('store-product');
+    Route::get('view-products', 'ProductController@index')->name('view-products');
 
 });

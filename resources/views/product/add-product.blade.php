@@ -5,12 +5,15 @@
 @section('content')
     <h1>Add Product</h1>
 
+ 
+
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                    
                     <form action=" {{ route('admin.store-product') }} " method="post">
+                        @csrf
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label">Upload Image <span class="text-danger">*</span>
                                 </label>
@@ -38,17 +41,10 @@
                                 <div class="col-lg-6">
                                     <select class="form-control" name="sc_id">
                                         <option value="">Please select</option>
-                                        <option value="html">HTML</option>
-                                        <option value="css">CSS</option>
-                                        <option value="javascript">JavaScript</option>
-                                        <option value="angular">Angular</option>
-                                        <option value="angular">React</option>
-                                        <option value="vuejs">Vue.js</option>
-                                        <option value="ruby">Ruby</option>
-                                        <option value="php">PHP</option>
-                                        <option value="asp">ASP.NET</option>
-                                        <option value="python">Python</option>
-                                        <option value="mysql">MySQL</option>
+                                        @foreach ($shoe_cats as $sc)
+                                        <option value=" {{ $sc->id }} ">{{ ucwords($sc->name) }}</option>
+                                        @endforeach
+                                       
                                     </select>
                                 </div>
                             </div>
@@ -56,7 +52,7 @@
                                 <label class="col-lg-4 col-form-label">Description <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" name="description" rows="5" placeholder="Give some details please.." required></textarea>
+                                    <textarea class="form-control" name="description" rows="5" placeholder="Give some details please.."></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -102,7 +98,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-8 ml-auto">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" value="true" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -111,4 +107,6 @@
             </div>
         </div>
     </div>
+
+
 @stop

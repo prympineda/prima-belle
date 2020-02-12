@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\ShoeCategory;
+use App\Product;
 class ProductController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+      
+
+        return view('product.index');
     }
 
     /**
@@ -23,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.add-product');
+        $shoe_cats = ShoeCategory::where('is_active', 1)->get();
+        return view('product.add-product', compact('shoe_cats'));
     }
 
     /**
@@ -34,31 +39,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $request->validate( [
-            'code' => 'required|unique:products',
-            'name' => 'required',
-            'description' => 'required',
-            'sc_id' => 'required',
-            'size' => 'required|numeric|min:5',
-            'price' => 'required|numeric|min:0|lt:old_price',
-            'old_price' => 'numeric|min:0|lt:old_price',
-            'stock' => 'required|numeric|min:0',
-            'photo_name' => 'required|image',
-        ]);
-        
-        if (empty($validator)) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->all()[0]);
-        }
 
-        Project::create([
+       $balodator = $request->validate( [
+            'description' => 'required|unique:products|max:255',
+            'old_price' => 'required',
+        ]);
+
+        return $balodator;
+       
+
+        Product::create([
             'uid' => \Str::uuid(),
+            'code' => $request->code,
             'name' => $request->name,
             'description' => $request->description,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'status_id' => 1,
+            'sc_id' => $request->sc_id,
+            'size' => $request->size,
+            'price' => $request->price,
+            'old_price' => $request->old_price,
+            'stock' => $request->stock,
+            'photo_name' => $request->photo_name
         ]);
-        return redirect()->back()->with('success', 'Project Created Successfully!');
+        return redirect()->back()->with('success', 'Product Created Successfully!');
     }
 
     /**

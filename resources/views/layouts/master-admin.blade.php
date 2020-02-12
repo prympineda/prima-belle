@@ -20,6 +20,8 @@
 
     <!-- Custom Stylesheet -->
     {{-- <link href="css/style.css" rel="stylesheet"> --}}
+    {{-- <link href="{{ asset('dashboard/plugins/sweetalert/css/sweetalert.css') }}" rel="stylesheet"> --}}
+    {{-- <link href="./plugins/sweetalert/css/sweetalert.css" rel="stylesheet"> --}}
 
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
@@ -175,7 +177,7 @@
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
-
+    
         <!--**********************************
             Sidebar start
         ***********************************-->
@@ -192,8 +194,8 @@
                             <i class="fas fa-money-bill"></i><span class="nav-text"> Product</span>
                         </a>
                         <ul aria-expanded="false">
+                            <li><a href=" {{route('admin.view-products')}} ">View Products</a></li>
                             <li><a href=" {{route('admin.add-product')}} ">Add Product</a></li>
-                            
                         </ul>
                     </li>
                 </ul>
@@ -233,6 +235,8 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
+
+    
     <!--**********************************
         Scripts
     ***********************************-->
@@ -288,6 +292,13 @@
     <script src="{{ asset('dashboard/js/dashboard/dashboard-1.js') }}"></script>
     {{-- <script src="./js/dashboard/dashboard-1.js"></script> --}}
     <script src="{{ asset('js/all.js') }}"></script>
+
+    {{-- <script src="{{ asset('dashboard/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('dashboard/plugins/sweetalert/js/sweetalert.init.js') }}"></script> --}}
+
+    {{-- <script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="./plugins/sweetalert/js/sweetalert.init.js"></script> --}}
+    @include('sweetalert::alert')
     @yield('custom-js')
 
 </body>
