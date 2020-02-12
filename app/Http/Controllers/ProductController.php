@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\ShoeCategory;
 use App\Product;
+use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-      
+        Alert::success('Success Title', 'Success Message');
 
         return view('product.index');
     }
@@ -40,13 +42,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-       $balodator = $request->validate( [
-            'description' => 'required|unique:products|max:255',
-            'old_price' => 'required',
+        $validatorrr = Validator::make($request->all(), [
+            'code' => 'required|unique:products',
+            'name' => 'required',
+            'description' => 'required',
+            'sc_id' => 'required',
+            'size' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:0',
+            'size' => 'required|numeric|min:0',
+            'photo_name' => 'required|image'
         ]);
 
-        return $balodator;
-       
+        if ($validatorrr->fails()) {
+            return redirect()->back()->withInput()->with('error', $validatorrr->messages());
+        }
+
+    
+        $file = $request->file('photo_name');
+        $name = time() . $file->getClientOriginalName();
+        $file->move(public_path('images'), $name);
 
         Product::create([
             'uid' => \Str::uuid(),
@@ -58,8 +72,22 @@ class ProductController extends Controller
             'price' => $request->price,
             'old_price' => $request->old_price,
             'stock' => $request->stock,
-            'photo_name' => $request->photo_name
+            'ribbon_tag' => $request->ribbon_tag,
+            'is_sale' => $request->is_sale,
+            'photo_name' => $name
         ]);
+
+        //  $path = $request->photo_name->store('images');
+        //  $path->save();
+        
+        // $image = $request->file('photo_name');
+        // $filename = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
+        // Image::make($image->getRealPath())->resize(468, 249)->save('public/img/products/'.$filename);
+        // $product->image = 'img/products/'.$filename;
+        // $product->save();
+        
+
+        
         return redirect()->back()->with('success', 'Product Created Successfully!');
     }
 
@@ -106,5 +134,35 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function viewDollShoes()
+    {
+        $doll_shoes = Product::where('sc_id', 3)->where('is_active', 1)->get();
+        return view('product.doll-shoes', compact('doll_shoes'));
+    }
+
+    public function viewMules()
+    {
+        $mules = Product::where('sc_id', 4)->where('is_active', 1)->get();
+        return view('product.mules', compact('mules'));
+    }
+
+    public function viewHalfInch()
+    {
+        $half_inch = Product::where('sc_id', 2)->where('is_active', 1)->get();
+        return view('product.half-inch', compact('half-inch'));
+    }
+
+    public function viewTwoInches()
+    {
+        $two_inches = Product::where('sc_id', 1)->where('is_active', 1)->get();
+        return view('product.two-inches', compact('two_inches'));
+    }
+
+    public function viewBirks()
+    {
+        $birks = Product::where('sc_id', 5)->where('is_active', 1)->get();
+        return view('product.birks', compact('birks'));
     }
 }
