@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\ActivityLog;
 
 class LoginController extends Controller
 {
@@ -27,22 +28,25 @@ class LoginController extends Controller
      *
      * @var string
      */
-   // protected $redirectTo = '/home';
-   protected function authenticated(Request $request, $user)
-    {
-        $role = Auth::user()->role->name;
-        switch ($role) {
-            case 'administrator':
-                    return redirect('/administrator/dashboard');
-                break;
-            case 'user':
-                    return redirect('/users/dashboard');
-                break;
-            default:
-                    return redirect('/login');
-                break;
-        }
-    }
+   protected $redirectTo = '/administrator/dashboard';
+
+   
+
+//    protected function authenticated(Request $request, $user)
+//     {
+//         $role = Auth::user()->role->name;
+//         switch ($role) {
+//             case 'administrator':
+//                     return redirect('/administrator/dashboard');
+//                 break;
+//             case 'user':
+//                     return redirect('/users/dashboard');
+//                 break;
+//             default:
+//                     return redirect('/login');
+//                 break;
+//         }
+//     }
 
 
     /**

@@ -11,28 +11,30 @@
 |
 */
 
-// Route::get('/', function () {
+Route::get('/', function () {
 
-//     return view('primabelle');
+    return view('primabelle');
     
  
-// });
+});
 
-Route::get('/', 'LandingPageController@index')->name('index');
+// Route::get('/', 'LandingPageController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['auth']], function() { 
    
-    //ADMIN DASHBOARD
+    //DASHBOARD
     Route::get('dashboard', 'AdminController@index')->name('dashboard');
+    Route::get('activity-logs', 'AdminController@getActivityLogs')->name('activity-logs');
+    Route::get('change-password', 'AdminController@changePassword')->name('change-password');
+    Route::post('save-change-password', 'AdminController@saveChangePassword')->name('save-change-password');
 
     //PRODUCT CRUD
     Route::get('add-product', 'ProductController@create')->name('add-product');
     Route::post('store-product', 'ProductController@store')->name('store-product');
+    Route::get('edit-product/{uid}', 'ProductController@edit')->name('edit-product');
+    Route::post('update-product/{uid}', 'ProductController@update')->name('update-product');
 
     //PRODUCT VIEW
     Route::get('view-doll-shoes', 'ProductController@viewDollShoes')->name('view-doll-shoes');

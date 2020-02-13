@@ -25,8 +25,10 @@
                                             @endif
                                         </div>
                                         <div class="product-content text-center">
+                                            <a href="{{ route('admin.edit-product', $doll_shoe->uid) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a href="JavaScript:Void(0);" data-toggle="tooltip" data-placement="top" title=" {{$doll_shoe->description}} "><i class="far fa-comment-alt"></i></a>
                                             <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($doll_shoe->name)}} </a></h4>
+                                                    {{ucwords($doll_shoe->name)}} </a></h4> 
 
                                             <h4 class="text-muted">Size: <span> {{$doll_shoe->size}} @if ($doll_shoe->stock != 0) /
                                                 </span> Stock: <span> {{$doll_shoe->stock}}</span>@endif</h4>

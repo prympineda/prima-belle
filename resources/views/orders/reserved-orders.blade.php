@@ -48,7 +48,7 @@
                                     <td> {{ $item->note ?: '...'}} </td>
                                     <td> {{ ($item->updated_at)}} </td>
                                     <td> 
-                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal" data-uid="{{$item->uid}}" data-product_uid="{{$item->product->uid}}" data-size="{{$item->product->size}}" data-stock="{{$item->product->stock}}" data-price="{{$item->product->price}}" data-product_name="{{$item->product->name}}" data-product_code=" {{ $item->product->code }} " data-quantity="{{ $item->quantity }}" data-customer_name="{{ $item->customer_name}}" data-customer_address="{{ $item->address }}" data-contact_details="{{ $item->contact_details }}"  data-customer_note="{{ $item->note }}"  > Edit</a> <br>
+                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal" data-uid="{{$item->uid}}" data-product_uid="{{$item->product->uid}}" data-size="{{$item->product->size}}" data-stock="{{$item->product->stock}}" data-price="{{$item->product->price}}" data-product_name="{{$item->product->name}}" data-product_code=" {{ $item->product->code }} " data-quantity="{{ $item->quantity }}" data-customer_name="{{ $item->customer_name}}" data-customer_address="{{ $item->address }}" data-contact_details="{{ $item->contact_details }}"  data-customer_note="{{ $item->note }}" data-toggle="tooltip" data-placement="top" title="Edit" > Edit</a> <br>
                                         <a href="#" class="btn btn-success btn-paid" data-item="{{ ucwords($item->product->code) }}" data-link="{{ route('admin.sold-items', $item->uid) }} "data-toggle="tooltip" data-placement="top" title="Paid">Paid</a> <br>
                                         <a href="#" class="btn btn-danger btn-cancel" data-item="{{ ucwords($item->product->code) }}" data-link="{{ route('admin.cancel-orders', $item->uid) }} "data-toggle="tooltip" data-placement="top" title="Cancel">Cancel</a> 
                                     </td>
@@ -199,7 +199,7 @@ $('#editModal').on('show.bs.modal', function (event) {
     Swal.fire({
         title: $(this).data().item,
         text: "Already Paid?",
-        type: 'warning',
+        icon: 'success',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -214,8 +214,8 @@ $('#editModal').on('show.bs.modal', function (event) {
 $('.btn-cancel').on('click', function(){
     Swal.fire({
         title: $(this).data().item,
-        text: "Cancel this Order?",
-        type: 'warning',
+        text: "Cancel this Order? Will remove this permanently.",
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',

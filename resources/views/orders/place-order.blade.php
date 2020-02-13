@@ -45,7 +45,7 @@
                                 <label class="col-lg-2 col-form-label">Note
                                 </label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" name="description" rows="5" placeholder="(Optional)">{{ old('description') }}</textarea>
+                                    <textarea class="form-control" name="description" rows="5" placeholder="(Optional/This will not shown in our Website.)">{{ old('description') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

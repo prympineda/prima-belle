@@ -8,6 +8,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\ShoeCategory;
 use App\Product;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\ActivityLog;
+use App\Notification;
+use App\NotificationStatus;
+use App\User;
 class ProductController extends Controller
 {
     /**
@@ -47,7 +52,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'sc_id' => 'required',
-            'size' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'size' => 'required|numeric|min:0',
             'photo_name' => 'required|image'
@@ -90,7 +95,7 @@ class ProductController extends Controller
         
 
         
-        return redirect()->back()->with('success', 'Product Created Successfully!');
+        return redirect()->back()->with('success', 'Successfully Added Product');
     }
 
     /**
@@ -110,9 +115,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($uid)
     {
-        //
+        $product = Product::where('uid', $uid)->first();
+        $shoe_cats = ShoeCategory::where('is_active', 1)->get();
+        return view ('product.edit-product', compact('product', 'shoe_cats'));
+
+
     }
 
     /**
@@ -122,9 +131,80 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uid)
     {
-        //
+
+        $product = Product::where('uid', $request->uid)->first();
+        $validatorrr = Validator::make($request->all(), [
+            'code' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'sc_id' => 'required',
+            'stock' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
+            'size' => 'required|numeric|min:0'
+        ]);
+
+        if ($validatorrr->fails()) {
+            return redirect()->back()->withInput()->with('error', $validatorrr->messages());
+        }
+
+        if($product->code != $request->code){
+            $email_check = User::where('email', $request->email)->first();
+
+            if ($email_check == True) {
+                return redirect()->back()->withInput()->with('error', 'Code already in use.');
+            }
+        }
+
+        $old_s = $product->stock;
+       
+       $product->update([
+            'code' => strtoupper($request->code),
+            'name' => $request->name,
+            'description' => $request->description,
+            'sc_id' => $request->sc_id,
+            'size' => $request->size,
+            'price' => $request->price,
+            'old_price' => $request->old_price,
+            'stock' => $request->stock,
+            'ribbon_tag' => $request->ribbon_tag,
+            'is_sale' => $request->is_sale
+        ]);
+
+        if ($request->photo_name != null){
+            $file = $request->file('photo_name');
+            $name = time() . $file->getClientOriginalName();
+            $product->update([
+                'photo_name' => $name
+            ]);
+            $file->move(public_path('images'), $name);
+        }      
+
+        if($old_s != $request->stock){
+            ActivityLog::create([
+                'uid' => \Str::uuid(),
+                'user_id' => Auth::user()->id,
+                'action' => 'Update Product Stock for "' . ucwords($product->name) . '(' .$product->code. ')" From ' . $old_s . ' To '. $request->stock
+            ]);
+    
+           $notif = Notification::create([
+                'uid' => \Str::uuid(),
+                'title' => 'Update Product Stock',
+                'message' => 'Update Order Stock for "' . ucwords($product->name) . '(' .$product->code. ')" From ' . $old_s . ' To '. $request->stock
+            ]);
+    
+            $users = User::where('is_active', 1)->get();
+            foreach ($users as $user){
+                NotificationStatus::create([
+                    'uid' => \Str::uuid(),
+                    'notif_id' => $notif->id,
+                    'user_id' => $user->id
+                ]);
+            }
+        }
+        
+        return redirect()->back()->with('success', 'Successfuly Update Product!');
     }
 
     /**
@@ -153,7 +233,7 @@ class ProductController extends Controller
     public function viewHalfInch()
     {
         $half_inch = Product::where('sc_id', 2)->where('is_active', 1)->get();
-        return view('product.half-inch', compact('half-inch'));
+        return view('product.half-inch', compact('half_inch'));
     }
 
     public function viewTwoInches()

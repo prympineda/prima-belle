@@ -73,8 +73,8 @@
    $('.btn-paid').on('click', function(){
     Swal.fire({
         title: $(this).data().item,
-        text: "Missed Item? This Item will go back to your Reserved Orders",
-        type: 'warning',
+        text: "Missed Item? This Item will go back to your Reserved Orders.",
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',

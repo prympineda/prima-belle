@@ -16,13 +16,22 @@ class OrdersController extends Controller
 {
     public function reservedOrders()
     {
-        $reserved_orders = Order::where('is_active', 1)->where('status', 1)->get();
+        if(Auth::user()->role_id == 1){
+            $reserved_orders = Order::where('is_active', 1)->where('status', 1)->get();
+        } else {
+            $reserved_orders = Order::where('user_id', Auth::user()->id)->where('is_active', 1)->where('status', 1)->get();
+        }
+       
         return view('orders.reserved-orders', compact('reserved_orders'));
     }
 
     public function soldOrders()
     {
-        $sold_orders = Order::where('is_active', 1)->where('status', 2)->get();
+        if(Auth::user()->role_id == 1){
+            $sold_orders = Order::where('is_active', 1)->where('status', 1)->get();
+        } else {
+            $sold_orders = Order::where('user_id', Auth::user()->id)->where('is_active', 1)->where('status', 2)->get();
+        }
         return view('orders.sold-orders', compact('sold_orders'));
     }
 
@@ -174,13 +183,13 @@ class OrdersController extends Controller
         ActivityLog::create([
             'uid' => \Str::uuid(),
             'user_id' => Auth::user()->id,
-            'action' => 'Sold "' . ucwords($item->product->name) . '(' .$product->code. ')" To ' . ucwords($item->customer_name)
+            'action' => 'Sold "' . ucwords($item->product->name) . '(' .$item->product->code. ')" To ' . ucwords($item->customer_name)
         ]);
 
        $notif = Notification::create([
             'uid' => \Str::uuid(),
             'title' => 'Sold Order',
-            'message' => 'Sold "' . ucwords($item->product->name) . '(' .$product->code. ')" To ' . ucwords($item->customer_name)
+            'message' => 'Sold "' . ucwords($item->product->name) . '(' .$item->product->code. ')" To ' . ucwords($item->customer_name)
         ]);
 
         $users = User::where('is_active', 1)->get();

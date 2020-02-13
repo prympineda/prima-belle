@@ -180,11 +180,12 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="#">
-                    <b class="logo-abbr"><img src="dashboard/images/logo.png" alt=""> </b>
+                    {{-- <b class="logo-abbr"><img src="dashboard/images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="dashboard/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
                         <img src="dashboard/images/logo-text.png" alt="">
-                    </span>
+                    </span> --}}
+                    <h2>Primabelle</h2>
                 </a>
             </div>
         </div>
@@ -259,16 +260,17 @@
                                 </div>
                             </div>
                         </li> --}}
+                        <li class="icons dropdown"> {{Auth::user()->name}} </li>
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="/dashboard/images/user/1.png" height="40" width="40" alt="">
+                                <img src="/dashboard/images/user/form-user.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="#"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="{{ route('admin.change-password') }}"><i class="icon-user"></i> <span>Change Password</span></a>
                                         </li>
                                         
                                         <hr class="my-2">
@@ -313,7 +315,7 @@
                     </li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fas fa-money-bill"></i><span class="nav-text"> Product</span>
+                            <i class="fas fa-boxes"></i><span class="nav-text"> Products</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href=" {{route('admin.add-product')}} ">Add Product</a></li>
@@ -332,6 +334,22 @@
                             <li><a href=" {{route('admin.reserved-orders')}} ">Reserved Orders</a></li>
                             <li><a href=" {{route('admin.sold-orders')}} ">Sold Orders</a></li>
                         </ul>
+                    </li>
+                    @if (Auth::user()->role_id == 1)
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-users"></i><span class="nav-text"> Users</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href=" {{route('admin.reserved-orders')}} ">Add User</a></li>
+                            <li><a href=" {{route('admin.sold-orders')}} ">Manage Users</a></li>
+                        </ul>
+                    </li>
+                    @endif
+                    <li>
+                        <a href=" {{ route('admin.activity-logs') }} " aria-expanded="false">
+                            <i class="fas fa-history"></i><span class="nav-text"> Activity Log</span>
+                        </a>
                     </li>
                 </ul>
             </div>
