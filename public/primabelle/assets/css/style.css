@@ -3538,7 +3538,7 @@ blockquote {
 #scrollUp {
     background: #f3a395 none repeat scroll 0 0;
     border-radius: 75%;
-    bottom: 85px;
+    bottom: 30px;
     color: #ffffff;
     cursor: pointer;
     display: none;
@@ -3546,7 +3546,7 @@ blockquote {
     height: 40px;
     line-height: 40px;
     position: fixed;
-    right: 12px;
+    right: 20px;
     text-align: center;
     width: 38px;
     z-index: 9999;

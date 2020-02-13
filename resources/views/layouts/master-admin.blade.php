@@ -25,9 +25,131 @@
 
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+    <style>
 
-    @yield('custom-css')
+        /* product area */
+.product-wrapper{
+    margin-bottom: 50px;
+}
+.product-wrapper,
+.product-img {
+    overflow: hidden;
+    position: relative;
+    min-width: 270px;
+    /* max-height: 326px; */
+}
+.product-img img {
+    width: 100%;
+}
+.product-action {
+    bottom: 0px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    transition: all 0.6s ease 0s;
+}
+.product-wrapper:hover .product-action {
+    bottom: 20px;
+    opacity: 1;
+}
+.product-content {
+    padding-top: 15px;
+}
+.product-content > h4 {
+    color: #646464;
+    font-size: 16px;
+    margin: 0;
+}
+.product-content > h4 a {
+    color: #646464;
+}
+.product-content > h4 a:hover,
+.product-action-style > a:hover {
+    color: #f3a395;
+}
+.product-rating i {
+    color: #f3a395;
+    font-size: 16px;
+    margin: 0 3px;
+}
+.product-rating {
+    margin: 11px 0 9px;
+}
+.product-price > span.old {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-price > span {
+    color: #646464;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 2px;
+}
+.product-action-style {
+    background-color: #fff;
+    box-shadow: 0 0 8px 1.7px rgba(0, 0, 0, 0.06);
+    display: inline-block;
+    padding: 16px 2px 12px;
+}
+.product-action-style > a {
+    color: #979797;
+    line-height: 1;
+    padding: 0 21px;
+    position: relative;
+}
+.product-action-style > a.action-plus {
+    font-size: 18px;
+}
+.product-action-style > a.action-heart {
+    font-size: 16px;
+}
+.product-action-style > a.action-cart {
+    font-size: 20px;
+    position: relative;
+    top: 2px;
+}
+.product-action-style > a::before {
+    background: #d2d2d2 none repeat scroll 0 0;
+    content: "";
+    height: 28px;
+    position: absolute;
+    right: 2px;
+    top: -5px;
+    width: 1px;
+}
+.product-action-style > a:last-child::before {
+    display: none;
+}
+.product-img > span {
+    background-color: #fff;
+    box-shadow: 0 0 8px 1.7px rgba(0, 0, 0, 0.06);
+    color: #333;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    left: 20px;
+    letter-spacing: 1px;
+    padding: 3px 12px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 20px;
+}
+.product-img img {
+    transition: all 1.5s ease 0s;
+    width: 100%;
+}
+.product-wrapper:hover .product-img img {
+    transform: scale(1.2);
+}
+           
 
+    </style>
+ @yield('custom-css');
 </head>
 
 <body>
@@ -185,7 +307,7 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="javascript:void()" aria-expanded="false">
+                        <a href=" {{ route('admin.dashboard') }} " aria-expanded="false">
                             <i class="fas fa-tachometer-alt"></i><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
@@ -200,6 +322,15 @@
                             <li><a href=" {{route('admin.view-half-inch')}} ">Half Inch Heels</a></li>
                             <li><a href=" {{route('admin.view-two-inches')}} ">2 Inches Heels</a></li>
                             <li><a href=" {{route('admin.view-birks')}} ">Birks</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-shopping-cart"></i><span class="nav-text"> Orders</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href=" {{route('admin.reserved-orders')}} ">Reserved Orders</a></li>
+                            <li><a href=" {{route('admin.sold-orders')}} ">Sold Orders</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -229,7 +360,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Primabelle 2020. All Rights Reserve</p>
+                <p>Copyright &copy; Primabelle 2020. All Rights Reserved.</p>
             </div>
         </div>
         <!--**********************************

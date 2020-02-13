@@ -27,13 +27,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['auth']], function() { 
    
-    Route::get('dashboard', 'AdminController@index')->name('index');
+    //ADMIN DASHBOARD
+    Route::get('dashboard', 'AdminController@index')->name('dashboard');
+
+    //PRODUCT CRUD
     Route::get('add-product', 'ProductController@create')->name('add-product');
     Route::post('store-product', 'ProductController@store')->name('store-product');
+
+    //PRODUCT VIEW
     Route::get('view-doll-shoes', 'ProductController@viewDollShoes')->name('view-doll-shoes');
     Route::get('view-mules', 'ProductController@viewMules')->name('view-mules');
     Route::get('view-half-inch', 'ProductController@viewHalfInch')->name('view-half-inch');
     Route::get('view-two-inches', 'ProductController@viewTwoInches')->name('view-two-inches');
     Route::get('view-birks', 'ProductController@viewBirks')->name('view-birks');
+
+    //ORDERS
+    Route::get('reserved-orders', 'OrdersController@reservedOrders')->name('reserved-orders');
+    Route::get('sold-orders', 'OrdersController@soldOrders')->name('sold-orders');
+
+    //PLACE ORDER
+    Route::get('place-orders/{uid}', 'OrdersController@placeOrders')->name('place-orders');
+    Route::post('update-place-orders', 'OrdersController@updatePlaceOrders')->name('update-place-orders');
+    Route::post('checkout-orders/{uid}', 'OrdersController@checkoutOrders')->name('checkout-orders');
+    Route::get('sold-items/{uid}', 'OrdersController@soldItems')->name('sold-items');
+    Route::get('unsold-items/{uid}', 'OrdersController@unsoldItems')->name('unsold-items');
+    Route::get('cancel-orders/{uid}', 'OrdersController@cancelReservedOrders')->name('cancel-orders');
 
 });

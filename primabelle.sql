@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 12, 2020 at 03:37 PM
+-- Generation Time: Feb 13, 2020 at 06:40 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -38,6 +38,22 @@ CREATE TABLE `activity_logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `activity_logs`
+--
+
+INSERT INTO `activity_logs` (`id`, `uid`, `user_id`, `action`, `status`, `for_admin`, `created_at`, `updated_at`) VALUES
+(1, '02cc8f16-2a4f-478c-aea1-d8016b666ac4', 1, 'Place Order for Mules 1 (3). Customer Name:Lebron', 1, 0, '2020-02-12 14:11:18', '2020-02-12 14:11:18'),
+(2, '001e2217-112b-47ad-afa0-b478bdfd0f90', 1, 'Place Order for Mules 1 (2). Customer Name:KD', 1, 0, '2020-02-12 14:13:16', '2020-02-12 14:13:16'),
+(3, '2c87f706-595c-45c0-9dca-18c9e13fbb6c', 1, 'Place Order for Mules 1 (2). Customer Name:Jim', 1, 0, '2020-02-12 14:13:59', '2020-02-12 14:13:59'),
+(4, '80092574-1d8d-45bd-9558-9220936b4609', 1, 'Sold  To Lebron', 1, 0, '2020-02-12 15:10:52', '2020-02-12 15:10:52'),
+(5, '54d77086-83ab-4605-adae-4da0b5fde702', 1, 'Sold Mules 1 To Jim', 1, 0, '2020-02-12 15:12:47', '2020-02-12 15:12:47'),
+(6, '34f6c3a3-cf4a-4c01-b69c-db41a2d8cdbb', 1, 'Place Order for Mules 1 (M-1) - Size: 7- Customer Name:Thompson', 1, 0, '2020-02-12 15:49:38', '2020-02-12 15:49:38'),
+(7, '115217ae-007b-4b15-ae1d-6abb873d4990', 1, 'Cancel Order - \"Mules 1 (M-1)\" - Customer Name: Thompson', 1, 0, '2020-02-12 16:22:51', '2020-02-12 16:22:51'),
+(8, 'f4df3560-9d29-48cd-843a-ca93b7d5b38d', 1, 'Update Order Quantity for \"Mules 1 (M-1)\" From 4 To 4', 1, 0, '2020-02-12 19:27:03', '2020-02-12 19:27:03'),
+(9, '03e696f4-377b-499e-a959-d29143e5e23b', 1, 'Update Order Quantity for \"Mules 1 (M-1)\" From 4 To 3', 1, 0, '2020-02-12 19:28:05', '2020-02-12 19:28:05'),
+(10, 'bdd6f4a8-962e-4c83-a225-c4907bd19e1e', 1, 'Place Order for \"doll shoes 4 (ds 4)\" - Size: 8Quantity: 3 - Customer Name:Kobe', 1, 0, '2020-02-12 19:33:30', '2020-02-12 19:33:30');
 
 -- --------------------------------------------------------
 
@@ -84,6 +100,22 @@ CREATE TABLE `notifications` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `uid`, `status`, `message`, `title`, `created_at`, `updated_at`) VALUES
+(1, '8c12c209-daf7-46be-97a0-837fdf5a1060', 1, 'Place Order for Mules 1 (3). Customer Name:Lebron', 'Place Order', '2020-02-12 14:11:18', '2020-02-12 14:11:18'),
+(2, 'b335a5d3-8215-4dac-b940-d6562ca5afd8', 1, 'Place Order for Mules 1 (2). Customer Name:KD', 'Place Order', '2020-02-12 14:13:16', '2020-02-12 14:13:16'),
+(3, '6c752ca4-e1b7-4d70-ba31-9159454e36e3', 1, 'Place Order for Mules 1 (2). Customer Name:Jim', 'Place Order', '2020-02-12 14:13:59', '2020-02-12 14:13:59'),
+(4, 'c6b30294-719e-4de8-af1d-aa37d9be24b9', 1, 'Sold  To Lebron', 'Place Order', '2020-02-12 15:10:52', '2020-02-12 15:10:52'),
+(5, '5c37393c-35c2-43ce-a039-1cdbde984e86', 1, 'Sold Mules 1 To Jim', 'Place Order', '2020-02-12 15:12:47', '2020-02-12 15:12:47'),
+(6, '541e5095-0dc1-4726-9b03-1dc9aa13f7d1', 1, 'Place Order for Mules 1 (M-1) - Size: 7- Customer Name:Thompson', 'Place Order', '2020-02-12 15:49:38', '2020-02-12 15:49:38'),
+(7, '27147055-6638-4a48-902d-0c352176e921', 1, 'Mules 1 (M-1)\" - Customer Name: Thompson', 'Cancel Order', '2020-02-12 16:22:51', '2020-02-12 16:22:51'),
+(8, '8be7713d-90b0-472f-81f9-a273cda00377', 1, 'Update Order Quantity for \"Mules 1 (M-1)\" From 4 To 4', 'Update Order Quantity', '2020-02-12 19:27:03', '2020-02-12 19:27:03'),
+(9, '9023424d-ca16-4d1e-aad8-8d2c43525340', 1, 'Update Order Quantity for \"Mules 1 (M-1)\" From 4 To 3', 'Update Order Quantity', '2020-02-12 19:28:05', '2020-02-12 19:28:05'),
+(10, '6c95a90d-243d-48d8-ab07-393f39c9e4f8', 1, 'Place Order for \"doll shoes 4 (ds 4)\" - Size: 8Quantity: 3 - Customer Name:Kobe', 'Place Order', '2020-02-12 19:33:30', '2020-02-12 19:33:30');
+
 -- --------------------------------------------------------
 
 --
@@ -95,11 +127,33 @@ CREATE TABLE `notification_statuses` (
   `uid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'c3a859c5-1b14-4942-9612-c7bb19f5c87d',
   `notif_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '1',
   `is_status` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notification_statuses`
+--
+
+INSERT INTO `notification_statuses` (`id`, `uid`, `notif_id`, `user_id`, `status`, `is_status`, `created_at`, `updated_at`) VALUES
+(1, '09f22573-bd60-46de-9a85-777d2508ba8f', 3, 1, 1, 0, '2020-02-12 14:13:59', '2020-02-12 14:13:59'),
+(2, 'e3fb1b08-6b9d-49a5-b5e6-8faaacad16b3', 3, 2, 1, 0, '2020-02-12 14:13:59', '2020-02-12 14:13:59'),
+(3, '5cc16a95-5d2f-4a9b-a921-79cb4b30e711', 4, 1, 1, 0, '2020-02-12 15:10:52', '2020-02-12 15:10:52'),
+(4, '71bde8f6-1467-4e33-b294-d42891c6f960', 4, 2, 1, 0, '2020-02-12 15:10:52', '2020-02-12 15:10:52'),
+(5, 'a9093dbf-24b5-439d-912d-fa1e5f040d31', 5, 1, 1, 0, '2020-02-12 15:12:47', '2020-02-12 15:12:47'),
+(6, '986649c7-4507-4aa0-838f-7ec6bd1b9be6', 5, 2, 1, 0, '2020-02-12 15:12:47', '2020-02-12 15:12:47'),
+(7, '3e388ac0-f2d1-40e2-9289-8cbb6d6d47f2', 6, 1, 1, 0, '2020-02-12 15:49:38', '2020-02-12 15:49:38'),
+(8, '69231815-2b15-4391-9386-804b7032cea2', 6, 2, 1, 0, '2020-02-12 15:49:38', '2020-02-12 15:49:38'),
+(9, '210ae3af-5ac4-4709-9016-ff3a4ec96614', 7, 1, 1, 0, '2020-02-12 16:22:51', '2020-02-12 16:22:51'),
+(10, 'f7e2be31-9a14-4152-ad2f-cf2cf8845086', 7, 2, 1, 0, '2020-02-12 16:22:51', '2020-02-12 16:22:51'),
+(11, '52a7dcde-70b1-4cbc-a117-534e2c348808', 8, 1, 1, 0, '2020-02-12 19:27:03', '2020-02-12 19:27:03'),
+(12, '8cbf9468-6896-4c17-b8d9-1a2887495cfe', 8, 2, 1, 0, '2020-02-12 19:27:03', '2020-02-12 19:27:03'),
+(13, '3d2da131-b165-41b2-b3d7-9a88e9ff398b', 9, 1, 1, 0, '2020-02-12 19:28:05', '2020-02-12 19:28:05'),
+(14, '02ea1b88-184e-4d47-a57d-1e576803900c', 9, 2, 1, 0, '2020-02-12 19:28:05', '2020-02-12 19:28:05'),
+(15, '513d8808-0093-46ca-8b86-e41a1ee4e1c5', 10, 1, 1, 0, '2020-02-12 19:33:30', '2020-02-12 19:33:30'),
+(16, '211cff26-9707-4e67-8995-cc3bd8345c87', 10, 2, 1, 0, '2020-02-12 19:33:30', '2020-02-12 19:33:30');
 
 -- --------------------------------------------------------
 
@@ -122,6 +176,17 @@ CREATE TABLE `orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `uid`, `user_id`, `product_id`, `quantity`, `customer_name`, `address`, `contact_details`, `note`, `status`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, '6b47361e-e1fe-4db7-8217-1570bdb9192e', 1, 29, 3, 'Lebron', NULL, NULL, NULL, 2, 1, '2020-02-12 14:11:18', '2020-02-12 15:10:52'),
+(2, 'e8f90de5-7747-46e0-ae3c-968fa9a62aec', 2, 29, 3, 'KD', NULL, NULL, NULL, 1, 1, '2020-02-12 14:13:16', '2020-02-12 19:28:05'),
+(3, '292107ee-8a71-41a0-a37b-619691f75758', 1, 29, 2, 'Jim', NULL, NULL, NULL, 2, 1, '2020-02-12 14:13:59', '2020-02-12 15:12:47'),
+(4, '00193f9a-a4fa-457c-963b-8deef134c3fb', 1, 29, 1, 'Thompson', NULL, NULL, NULL, 3, 1, '2020-02-12 15:49:38', '2020-02-12 16:22:51'),
+(5, '2f56f8b6-7e3b-411b-8af1-79c94f312919', 1, 27, 3, 'Kobe', NULL, NULL, NULL, 1, 1, '2020-02-12 19:33:30', '2020-02-12 19:33:30');
 
 -- --------------------------------------------------------
 
@@ -168,8 +233,9 @@ INSERT INTO `products` (`id`, `uid`, `code`, `name`, `is_active`, `description`,
 (24, '7efa92a8-9d67-4a25-aae1-39cfbe0f5fcc', 'ds 1', 'doll shoes 1', 1, 'doll shoes 1', 7, 350, NULL, 4, NULL, 'NEW', '158151585185100969_1476899819131362_7811180734026088448_o.jpg', '2020-02-12 05:57:31', '2020-02-12 05:57:31', 3),
 (25, 'd45793cc-71f1-4344-81ce-14be5aa9eb53', 'ds 2', 'doll shoes 2', 1, 'doll shoes 2', 8, 370, 420, 3, NULL, NULL, '158151800782112640_1458995130921831_5653141667025256448_o.jpg', '2020-02-12 06:33:27', '2020-02-12 06:33:27', 3),
 (26, 'f4f72400-c587-4c34-8176-479a65fcb77d', 'ds 3', 'doll shoes 3', 1, 'doll shoes 3', 7, 320, NULL, 0, NULL, 'Sale', '1581518196doll_shoes_4.jpg', '2020-02-12 06:36:36', '2020-02-12 06:36:36', 3),
-(27, '5535d6b4-1a32-4810-bfd6-7aea5489a5c6', 'ds 4', 'doll shoes 4', 1, 'doll shoes 4', 8, 340, NULL, 5, NULL, NULL, '1581518298doll_shoes_3.jpg', '2020-02-12 06:38:18', '2020-02-12 06:38:18', 3),
-(28, '860b16c7-30da-43f2-9d88-af19237ded7d', 'ds 5', 'doll shoes 5', 1, 'doll shoes 5', 8, 350, NULL, 2, NULL, NULL, '158151899984348840_1476899505798060_5746676558559444992_o.jpg', '2020-02-12 06:49:59', '2020-02-12 06:49:59', 3);
+(27, '5535d6b4-1a32-4810-bfd6-7aea5489a5c6', 'ds 4', 'doll shoes 4', 1, 'doll shoes 4', 8, 340, NULL, 2, NULL, NULL, '1581518298doll_shoes_3.jpg', '2020-02-12 06:38:18', '2020-02-12 19:33:30', 3),
+(28, '860b16c7-30da-43f2-9d88-af19237ded7d', 'ds 5', 'doll shoes 5', 1, 'doll shoes 5', 8, 350, NULL, 2, NULL, NULL, '158151899984348840_1476899505798060_5746676558559444992_o.jpg', '2020-02-12 06:49:59', '2020-02-12 06:49:59', 3),
+(29, '6ab7e283-392c-498c-ab04-f55566392bdf', 'M-1', 'Mules 1', 1, 'Mules 1', 7, 350, NULL, 1, NULL, NULL, '1581546138mules_1.jpg', '2020-02-12 11:22:18', '2020-02-12 19:28:05', 4);
 
 -- --------------------------------------------------------
 
@@ -329,7 +395,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -341,25 +407,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `notification_statuses`
 --
 ALTER TABLE `notification_statuses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `roles`

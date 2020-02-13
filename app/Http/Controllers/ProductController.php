@@ -60,11 +60,11 @@ class ProductController extends Controller
     
         $file = $request->file('photo_name');
         $name = time() . $file->getClientOriginalName();
-        $file->move(public_path('images'), $name);
+        
 
         Product::create([
             'uid' => \Str::uuid(),
-            'code' => $request->code,
+            'code' => strtoupper($request->code),
             'name' => $request->name,
             'description' => $request->description,
             'sc_id' => $request->sc_id,
@@ -76,6 +76,8 @@ class ProductController extends Controller
             'is_sale' => $request->is_sale,
             'photo_name' => $name
         ]);
+
+        $file->move(public_path('images'), $name);
 
         //  $path = $request->photo_name->store('images');
         //  $path->save();
@@ -165,8 +167,4 @@ class ProductController extends Controller
         $birks = Product::where('sc_id', 5)->where('is_active', 1)->get();
         return view('product.birks', compact('birks'));
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5826472d6203f4a42fde211a0e09dcfb6e559632

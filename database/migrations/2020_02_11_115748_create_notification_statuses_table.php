@@ -20,7 +20,7 @@ class CreateNotificationStatusesTable extends Migration
             $table->foreign('notif_id')->references('id')->on('notifications')->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->integer('is_status')->default(0);
             $table->timestamps();
         });
