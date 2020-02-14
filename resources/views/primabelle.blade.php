@@ -73,7 +73,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-7 col-7">
                             <div class="header-site-icon">
                                 <div class="header-search same-style">
-                                    <a href=""> <i class="fab fa-facebook"></i> </a>
+                                    <a href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif" target="_blank"> <i class="fab fa-facebook"></i> </a>
                                 </div>
                                 <div class="header-login same-style">
                                     <a href="#"> <i class="fab fa-instagram"></i> </a>

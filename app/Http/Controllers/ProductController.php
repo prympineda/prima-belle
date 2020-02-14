@@ -84,14 +84,26 @@ class ProductController extends Controller
 
         $file->move(public_path('images'), $name);
 
-        //  $path = $request->photo_name->store('images');
-        //  $path->save();
-        
-        // $image = $request->file('photo_name');
-        // $filename = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
-        // Image::make($image->getRealPath())->resize(468, 249)->save('public/img/products/'.$filename);
-        // $product->image = 'img/products/'.$filename;
-        // $product->save();
+        ActivityLog::create([
+            'uid' => \Str::uuid(),
+            'user_id' => Auth::user()->id,
+            'action' => 'Add Product - "' . ucwords($request->name) . '(' .$request->code. ')"'
+        ]);
+
+       $notif = Notification::create([
+            'uid' => \Str::uuid(),
+            'title' => 'Add Product - ',
+            'message' => 'Add Product - "' . ucwords($request->name) . '(' .$request->code. ')"'
+        ]);
+
+        $users = User::where('is_active', 1)->get();
+        foreach ($users as $user){
+            NotificationStatus::create([
+                'uid' => \Str::uuid(),
+                'notif_id' => $notif->id,
+                'user_id' => $user->id
+            ]);
+        }
         
 
         
