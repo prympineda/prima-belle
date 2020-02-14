@@ -9,9 +9,17 @@ use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\User;
+use App\Rules\MatchOldPassword;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
         $reserved_items = Order::where('status', 1)->get();
@@ -44,7 +52,7 @@ class AdminController extends Controller
         if(Auth::user()->role_id == 1){
             $activity_logs = ActivityLog::where('status', 1)->orderBy('created_at', 'desc')->get();
         } else {
-            $activity_logs = ActivityLog::where('status', 1)->where('for_admin', 0)->orderBy('created_at', 'desc')->get();
+            $activity_logs = ActivityLog::where('status', 1)->where('for_admin', 1)->orderBy('created_at', 'desc')->get();
         }
        
         return view('admin.activity-logs', compact('activity_logs')); 
@@ -59,7 +67,7 @@ class AdminController extends Controller
     {
 
         $validatorrr = Validator::make($request->all(), [
-            'current_password' => 'required',
+            'current_password' => ['required', new MatchOldPassword],
             'new_password' => 'required|min:8',
             'new_confirm_password' => 'same:new_password',
         ]);
@@ -68,16 +76,16 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with('error', $validatorrr->messages());
         }
 
-        if(Auth::user()->password != $request->current_password){
-            return redirect()->back()->with('error', "Password Doesn't Match");
-        }
-
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
 
-        ActivityLog::create([
+        $al = ActivityLog::create([
             'uid' => \Str::uuid(),
             'user_id' => Auth::user()->id,
             'action' => 'Changed Password',
+            'for_admin' => 1
+        ]);
+
+        $al->update([
             'for_admin' => 1
         ]);
 

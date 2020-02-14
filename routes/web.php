@@ -12,17 +12,18 @@
 */
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('index');
 
-    return view('primabelle');
-    
- 
-});
+})->name('landing_page');
 
- Route::get('/', 'LandingPageController@index')->name('index');
+Route::get('/', 'LandingPageController@index')->name('index');
 
 Auth::routes();
 
-Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['auth']], function() { 
+Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['auth', 'preventBackHistory']], function() { 
    
     //DASHBOARD
     Route::get('dashboard', 'AdminController@index')->name('dashboard');
