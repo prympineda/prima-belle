@@ -44,6 +44,15 @@
           $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
         }
       });
+
+      $('.nav-contact-us').click(function(e){
+        e.preventDefault();
+        var target = $('footer');
+        if(target.length){
+          var scrollTo = target.offset().top;
+          $('body, html').animate({scrollTop: scrollTo+'px'}, 800);
+        }
+      });
     
     /*====== sidebarCart ======*/
     function sidebarCart() {

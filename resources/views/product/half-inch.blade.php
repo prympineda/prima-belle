@@ -27,10 +27,9 @@
                                     </div>
                                     <div class="product-content text-center">
                                         <a href="{{ route('admin.edit-product', $hi->uid) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                        <a href="JavaScript:Void(0);" data-toggle="tooltip" data-placement="top" title=" {{$hi->description}} "><i class="far fa-comment-alt"></i></a>
                                         <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
                                                 {{ucwords($hi->name)}} </a></h4> 
-
+                                                <h5 class="p-0 m-0"> {{$hi->code}} </h5>
                                         <h4 class="text-muted">Size: <span> {{$hi->size}} @if ($hi->stock != 0) /
                                             </span> Stock: <span> {{$hi->stock}}</span>@endif</h4>
                                         <!-- <div class="product-rating">

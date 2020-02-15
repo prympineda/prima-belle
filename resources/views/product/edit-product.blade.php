@@ -44,13 +44,6 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label">Description <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-lg-6">
-                                    <textarea class="form-control" name="description" rows="5" placeholder="Give some details please.." required>{{ $product->description }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-lg-4 col-form-label">Size<span class="text-danger">*</span> </label>
                                 <div class="col-lg-6">
                                     <input type="number" class="form-control" value="{{ $product->size }}"  name="size" required>

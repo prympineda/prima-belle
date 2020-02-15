@@ -35,10 +35,41 @@
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'primabelle';
+  src: url('/primabelle/assets/fonts/Englebert-Regular.woff');
+}
+
 /*----------- 2. Home page 1 --------*/
 
 
 /* Custom */
+/* body{
+    background-color: #f5e3e9 !important;
+} */
+
+.brand{
+    font-family: primabelle;
+    font-size: 40px;
+    color: black;
+}
+
+.product-code{
+        background-color: #fff;
+        box-shadow: 0 0 8px 1.7px rgba(0, 0, 0, 0.06);
+        color: #333;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 500;
+        right: 20px;
+        letter-spacing: 1px;
+        padding: 3px 12px;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        bottom: 20px;
+}
+
 #shop{
     padding-top: 110px !important;
 }
@@ -955,6 +986,8 @@ a.slider-btn:hover::before {
 }
 .product-img img {
     width: 100%;
+    border: solid 5px #f5e3e9;
+    
 }
 .product-action {
     bottom: 0px;
@@ -1039,7 +1072,7 @@ a.slider-btn:hover::before {
 .product-action-style > a:last-child::before {
     display: none;
 }
-.product-img > span {
+.ribbon-tag {
     background-color: #fff;
     box-shadow: 0 0 8px 1.7px rgba(0, 0, 0, 0.06);
     color: #333;

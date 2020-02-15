@@ -39,6 +39,8 @@ Route::group(['prefix' => 'administrator', 'as' => 'admin.', 'middleware' => ['a
 
     //PRODUCT VIEW
     Route::get('view-doll-shoes', 'ProductController@viewDollShoes')->name('view-doll-shoes');
+    Route::get('view-all-products', 'ProductController@viewAllProducts')->name('view-all-products');
+    Route::get('view-swen-sole-doll-shoes', 'ProductController@viewSwenSoleDollShoes')->name('view-swen-sole-doll-shoes');
     Route::get('view-mules', 'ProductController@viewMules')->name('view-mules');
     Route::get('view-half-inch', 'ProductController@viewHalfInch')->name('view-half-inch');
     Route::get('view-two-inches', 'ProductController@viewTwoInches')->name('view-two-inches');

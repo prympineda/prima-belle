@@ -319,11 +319,12 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href=" {{route('admin.add-product')}} ">Add Product</a></li>
+                            <li><a href=" {{route('admin.view-swen-sole-doll-shoes')}} ">Swen Sole Doll Shoes</a></li>
                             <li><a href=" {{route('admin.view-mules')}} ">Mules</a></li>
                             <li><a href=" {{route('admin.view-doll-shoes')}} ">Doll Shoes</a></li>
                             <li><a href=" {{route('admin.view-half-inch')}} ">Half Inch Heels</a></li>
-                            <li><a href=" {{route('admin.view-two-inches')}} ">2 Inches Heels</a></li>
-                            <li><a href=" {{route('admin.view-birks')}} ">Birks</a></li>
+                            <li><a href=" {{route('admin.view-two-inches')}} ">Two Inches Heels</a></li>
+                            <li><a href=" {{route('admin.view-all-products')}} ">All Products</a></li>
                         </ul>
                     </li>
                     <li class="mega-menu mega-menu-sm">
@@ -341,8 +342,8 @@
                             <i class="fas fa-users"></i><span class="nav-text"> Users</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href=" {{route('admin.reserved-orders')}} ">Add User</a></li>
-                            <li><a href=" {{route('admin.sold-orders')}} ">Manage Users</a></li>
+                            <li><a >Add User</a></li>
+                            <li><a >Manage Users</a></li>
                         </ul>
                     </li>
                     @endif

@@ -137,7 +137,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Note: </label>
                         <div class="col-sm-8">
-                         <textarea name="" id="customer_note" cols="37" rows="5"></textarea>
+                         <textarea name="note" id="customer_note" rows="5"></textarea>
                         </div>
                     </div>
                

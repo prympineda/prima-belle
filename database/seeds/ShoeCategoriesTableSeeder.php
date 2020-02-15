@@ -13,7 +13,7 @@ class ShoeCategoriesTableSeeder extends Seeder
     {
         DB::table('shoe_categories')->insert([
             'uid' => \Str::uuid(),
-            'name' => "2 Inches Heels"
+            'name' => "Two Inches Heels"
         ]);
         DB::table('shoe_categories')->insert([
             'uid' => \Str::uuid(),
@@ -30,6 +30,10 @@ class ShoeCategoriesTableSeeder extends Seeder
         DB::table('shoe_categories')->insert([
             'uid' => \Str::uuid(),
             'name' => "Birks"
+        ]);
+        DB::table('shoe_categories')->insert([
+            'uid' => \Str::uuid(),
+            'name' => "Sewn Sole Doll Shoes"
         ]);
     }
 }

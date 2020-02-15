@@ -24,5 +24,35 @@ class UsersTableSeeder extends Seeder
             'email' => 'khaliza@prima-belle.com',
             'password' => bcrypt('password')
         ]);
+        DB::table('users')->insert([
+            'uid' => \Str::uuid(),
+            'name' => "Grazielle",
+            'email' => 'grazielle@prima-belle.com',
+            'password' => bcrypt('password')
+        ]);
+        DB::table('users')->insert([
+            'uid' => \Str::uuid(),
+            'name' => "Kelmon",
+            'email' => 'kelmon@prima-belle.com',
+            'password' => bcrypt('password')
+        ]);
+        DB::table('users')->insert([
+            'uid' => \Str::uuid(),
+            'name' => "Johanna",
+            'email' => 'johanna@prima-belle.com',
+            'password' => bcrypt('password')
+        ]);
+        DB::table('users')->insert([
+            'uid' => \Str::uuid(),
+            'name' => "Charmaine",
+            'email' => 'charmaine@prima-belle.com',
+            'password' => bcrypt('password')
+        ]);
+        DB::table('users')->insert([
+            'uid' => \Str::uuid(),
+            'name' => "Toby",
+            'email' => 'toby@prima-belle.com',
+            'password' => bcrypt('password')
+        ]);
     }
 }

@@ -17,9 +17,9 @@ class OrdersController extends Controller
     public function reservedOrders()
     {
         if(Auth::user()->role_id == 1){
-            $reserved_orders = Order::where('is_active', 1)->where('status', 1)->get();
+            $reserved_orders = Order::where('is_active', 1)->where('status', 1)->orderBy('created_at', 'desc')->get();
         } else {
-            $reserved_orders = Order::where('user_id', Auth::user()->id)->where('is_active', 1)->where('status', 1)->get();
+            $reserved_orders = Order::where('user_id', Auth::user()->id)->where('is_active', 1)->where('status', 1)->orderBy('created_at', 'desc')->get();
         }
        
         return view('orders.reserved-orders', compact('reserved_orders'));
@@ -28,9 +28,9 @@ class OrdersController extends Controller
     public function soldOrders()
     {
         if(Auth::user()->role_id == 1){
-            $sold_orders = Order::where('is_active', 1)->where('status', 1)->get();
+            $sold_orders = Order::where('is_active', 1)->where('status', 2)->orderBy('created_at', 'desc')->get();
         } else {
-            $sold_orders = Order::where('user_id', Auth::user()->id)->where('is_active', 1)->where('status', 2)->get();
+            $sold_orders = Order::where('user_id', Auth::user()->id)->where('is_active', 1)->where('status', 2)->orderBy('created_at', 'desc')->get();
         }
         return view('orders.sold-orders', compact('sold_orders'));
     }

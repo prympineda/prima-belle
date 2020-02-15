@@ -42,16 +42,16 @@
 
                             </div>
                             <div class="sticky-logo">
-                                <a href="#">Primabelle</a>
+                                <a href="#" class="brand">Primabelle</a>
                             </div>
                             <div class="logo-small-device">
-                                <a href="#">Primabelle</a>
+                                <a href="#" class="brand">Primabelle</a>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 d-none d-md-block">
                             <div class="logo-menu-wrapper text-center">
                                 <div class="logo">
-                                    <a href="#">Primabelle</a>
+                                    <a href="#" class="brand">Primabelle</a>
                                 </div>
                                 <div class="main-menu">
                                     <nav>
@@ -63,8 +63,8 @@
                                                         class="ion-ios-arrow-down"></i></a> </li>
                                             <li><a href="#" class="nav-sale">sale <i class="ion-ios-arrow-down"></i></a>
                                             </li>
-                                            <li><a href="#" class="nav-about_us">about us </a></li>
-                                            <li><a href="#" class="nav-contact_us">contact us</a></li>
+                                            {{-- <li><a href="#" class="nav-about_us">about us </a></li> --}}
+                                            <li><a href="#" class="nav-contact-us">contact us</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -76,10 +76,10 @@
                                     <a href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif" target="_blank"> <i class="fab fa-facebook"></i> </a>
                                 </div>
                                 <div class="header-login same-style">
-                                    <a href="#"> <i class="fab fa-instagram"></i> </a>
+                                    <a href="https://www.instagram.com/primabelleph.shoes/" target="_blank"> <i class="fab fa-instagram"></i> </a>
                                 </div>
                                 <div class="header-cart same-style">
-                                    <a href=""> <i class="fab fa-facebook-messenger"></i> </a>
+                                    <a href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif" target="_blank"> <i class="fab fa-facebook-messenger"></i> </a>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                                     class="ion-ios-arrow-down"></i></a> </li>
                                         <li><a href="#" class="nav-sale">sale <i class="ion-ios-arrow-down"></i></a>
                                         </li>
-                                        <li><a href="#" class="nav-about_us">about us </a></li>
+                                        {{-- <li><a href="#" class="nav-about_us">about us </a></li> --}}
                                         <li><a href="#" class="nav-contact_us">contact us</a></li>
                                     </ul>
                                 </nav>
@@ -125,7 +125,7 @@
                                     <h2 class="animated">Sale off <span>30%</span> for all </h2>
                                     <p class="animated">Lorem ipsum dolor sit amet consectetur adipisici elit, sed do
                                         eius tempor incididunt ut labore et dolore magna.</p>
-                                    <a class="slider-btn animated" href="shop.html">shop now</a>
+                                    <a class="slider-btn animated" href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif" target="_blank">shop now</a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -150,7 +150,7 @@
                                     <h2 class="animated">Sale off <span>30%</span> for all </h2>
                                     <p class="animated">Lorem ipsum dolor sit amet consectetur adipisici elit, sed do
                                         eius tempor incididunt ut labore et dolore magna.</p>
-                                    <a class="slider-btn animated" href="shop.html">shop now</a>
+                                    <a class="slider-btn animated" href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif" target="_blank">shop now</a>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                                     <h2 class="animated">Sale off <span>30%</span> for all </h2>
                                     <p class="animated">Lorem ipsum dolor sit amet consectetur adipisici elit, sed do
                                         eius tempor incididunt ut labore et dolore magna.</p>
-                                    <a class="slider-btn animated" href="shop.html">shop now</a>
+                                    <a class="slider-btn animated" href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif" target="_blank">shop now</a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -240,12 +240,12 @@
 
         <section id="shop">
             <div class="product-area pb-80">
-                <div class="container">
                     {{-- Doll Shoes --}}
+                <div class="container">
                     <div class="section-title text-center mb-20">
                         <h2>Doll Shoes</h2>
                     </div>
-                    @if (count($doll_shoes) > 0)
+                    @if (count($doll_shoes) == 0)
                     <div class="product-tab-list text-center mb-60 nav product-menu-mrg" role="tablist">
                         <a class="active" href="#home1" data-toggle="tab" role="tab" aria-selected="true"
                             aria-controls="home1">
@@ -264,12 +264,13 @@
                                                 <img src="images/{{ $ds->photo_name }}" alt="">
                                             </a>
                                             @if ($ds->ribbon_tag != null)
-                                            <span> {{$ds->ribbon_tag}} </span>
+                                            <span class="ribbon-tag"> {{$ds->ribbon_tag}} </span>
                                             @endif
+                                            {{-- <span class="product-code"> {{$ds->code}} </span> --}}
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($ds->name)}} </a></h4>
+                                            <h4><a> {{ucwords($ds->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{ $ds->code }} </h5>
                                             <h4 class="text-muted">Size: <span> {{$ds->size}} @if ($ds->stock != 0) /
                                                 </span> Stock: <span> {{$ds->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
@@ -295,7 +296,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 {{-- Mules --}}
@@ -321,13 +321,13 @@
                                                 <img src="images/{{ $mule->photo_name }}" alt="">
                                             </a>
                                             @if ($mule->ribbon_tag != null)
-                                            <span> {{$mule->ribbon_tag}} </span>
+                                            <span class="ribbon-tag"> {{$mule->ribbon_tag}} </span>
                                             @endif
+                                            {{-- <span class="product-code"> {{$mule->code}} </span> --}}
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($mule->name)}} </a></h4>
-
+                                            <h4><a> {{ucwords($mule->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{ $mule->code }} </h5>
                                             <h4 class="text-muted">Size: <span> {{$mule->size}} @if ($mule->stock != 0) /
                                                 </span> Stock: <span> {{$mule->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
@@ -378,13 +378,13 @@
                                                 <img src="images/{{ $ti->photo_name }}" alt="">
                                             </a>
                                             @if ($ti->ribbon_tag != null)
-                                            <span> {{$ti->ribbon_tag}} </span>
+                                            <span class="ribbon-tag"> {{$ti->ribbon_tag}} </span>
                                             @endif
+                                            {{-- <span class="product-code"> {{$ti->code}} </span> --}}
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($ti->name)}} </a></h4>
-
+                                            <h4><a> {{ucwords($ti->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{ $ti->code }} </h5>
                                             <h4 class="text-muted">Size: <span> {{$ti->size}} @if ($ti->stock != 0) /
                                                 </span> Stock: <span> {{$ti->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
@@ -435,13 +435,13 @@
                                                 <img src="images/{{ $hi->photo_name }}" alt="">
                                             </a>
                                             @if ($hi->ribbon_tag != null)
-                                            <span> {{$hi->ribbon_tag}} </span>
+                                            <span class="ribbon-tag"> {{$hi->ribbon_tag}} </span>
                                             @endif
+                                            {{-- <span class="product-code"> {{$hi->code}} </span> --}}
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($hi->name)}} </a></h4>
-
+                                            <h4><a> {{ucwords($hi->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{ $hi->code }} </h5>
                                             <h4 class="text-muted">Size: <span> {{$hi->size}} @if ($hi->stock != 0) /
                                                 </span> Stock: <span> {{$hi->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
@@ -469,12 +469,12 @@
                     </div>
                 </div>
 
-                {{-- Birks --}}
+                {{-- Sewn Sole Doll Shoes --}}
                 <div class="container">
                     <div class="section-title text-center mb-20">
-                        <h2>Birks</h2>
+                        <h2>Sewn Sole Doll Shoes</h2>
                     </div>
-                    @if (count($birks) == 0)
+                    @if (count($ssd) == 0)
                     <div class="product-tab-list text-center mb-60 nav product-menu-mrg" role="tablist">
                         <a class="active" data-toggle="tab" role="tab" aria-selected="true" aria-controls="home1">
                             <h4>Will Re-stock Soon!</h4>
@@ -484,23 +484,23 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="home1" role="tabpanel">
                             <div class="row">
-                                @foreach ($birks as $birk)
+                                @foreach ($ssd as $ss)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="product-wrapper mb-45">
                                         <div class="product-img">
                                             <a>
-                                                <img src="images/{{ $birk->photo_name }}" alt="">
+                                                <img src="images/{{ $ss->photo_name }}" alt="">
                                             </a>
-                                            @if ($birk->ribbon_tag != null)
-                                            <span> {{$birk->ribbon_tag}} </span>
+                                            @if ($ss->ribbon_tag != null)
+                                            <span class="ribbon-tag"> {{$ss->ribbon_tag}} </span>
                                             @endif
+                                            {{-- <span class="product-code"> {{$ss->code}} </span> --}}
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($birk->name)}} </a></h4>
-
-                                            <h4 class="text-muted">Size: <span> {{$birk->size}} @if ($birk->stock != 0) /
-                                                </span> Stock: <span> {{$birk->stock}}</span>@endif</h4>
+                                            <h4><a> {{ucwords($ss->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{ $ss->code }} </h5>
+                                            <h4 class="text-muted">Size: <span> {{$ss->size}} @if ($ss->stock != 0) /
+                                                </span> Stock: <span> {{$ss->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
                                                 <i class="ion-ios-star"></i>
                                                 <i class="ion-ios-star"></i>
@@ -509,11 +509,11 @@
                                                 <i class="ion-ios-star-outline"></i>
                                             </div> -->
                                             <div class="product-price">
-                                                @if ($birk->old_price != null)
-                                                <span class="old"> P{{$birk->old_price}} </span>
+                                                @if ($ss->old_price != null)
+                                                <span class="old"> P{{$s->old_price}} </span>
                                                 @endif
-                                                <span>P{{$birk->price}}</span>
-                                                @if ($birk->stock == 0)
+                                                <span>P{{$ss->price}}</span>
+                                                @if ($ss->stock == 0)
                                                 <span class="text-danger">Sold Out</span>
                                                 @endif
                                             </div>
@@ -705,13 +705,13 @@
                                                 <img src="images/{{ $sale->photo_name }}" alt="">
                                             </a>
                                             @if ($sale->ribbon_tag != null)
-                                            <span> {{$sale->ribbon_tag}} </span>
+                                            <span class="ribbon-tag"> {{$sale->ribbon_tag}} </span>
                                             @endif
+                                            {{-- <span class="product-code"> {{$sale->code}} </span> --}}
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    {{ucwords($sale->name)}} </a></h4>
-
+                                            <h4><a> {{ucwords($sale->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{ $sale->code }} </h5>
                                             <h4 class="text-muted">Size: <span> {{$sale->size}} @if ($sale->stock != 0) /
                                                 </span> Stock: <span> {{$sale->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">
@@ -747,7 +747,7 @@
             <div class="container-fluid">
                 <div class="footer-top pt-85 pb-25">
                     <div class="row">
-                        <div class="col-lg-3 col-md-5">
+                        <div class="col-lg-3 col-12">
                             <div class="footer-widget mb-30">
                                 <div class="footer-widget-title">
                                     <h3>Get in Touch</h3>
@@ -755,7 +755,7 @@
                                 <div class="food-info-wrapper">
                                     <div class="food-address">
                                         <div class="food-info-icon">
-                                            <i class="ion-ios-home-outline"></i>
+                                            <i class="fas fa-map-marker-alt"></i>
                                         </div>
                                         <div class="food-info-content">
                                             <p>Concepcion, Tarlac</p>
@@ -763,7 +763,7 @@
                                     </div>
                                     <div class="food-address">
                                         <div class="food-info-icon">
-                                            <i class="ion-ios-telephone-outline"></i>
+                                            <i class="fas fa-phone-square-alt"></i>
                                         </div>
                                         <div class="food-info-content">
                                             <p>(+63) 918 739 6400 </p>
@@ -771,13 +771,35 @@
                                     </div>
                                     <div class="food-address">
                                         <div class="food-info-icon">
-                                            <i class="ion-ios-email-outline"></i>
+                                            <i class="fas fa-envelope"></i>
                                         </div>
                                         <div class="food-info-content">
-                                            <p><a href="#">primabelle2020@gmail.com</a></p>
+                                            <p><a href="mailto:primabelle2020@gmail.com">primabelle2020@gmail.com</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="food-address">
+                                        <div class="food-info-icon">
+                                            <i class="fab fa-facebook"></i>
+                                        </div>
+                                        <div class="food-info-content">
+                                            <p><a href="https://www.facebook.com/Primabelle-Shoes-PH-111332330439593/?notif_id=1581542261881210&notif_t=page_fan&ref=notif">Facebook Page</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="food-address">
+                                        <div class="food-info-icon">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="food-info-content">
+                                            <p><a href="https://www.instagram.com/primabelleph.shoes/">Instagram Page</a></p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-12">
+                            <div class="container" style="height: 300px; width: 800px">
+                                <img src="/primabelle/assets/img/Slide1.JPG" style="height: 100%; width: 100%" alt="">
+
                             </div>
                         </div>
 

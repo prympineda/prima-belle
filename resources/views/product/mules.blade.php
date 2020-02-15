@@ -25,8 +25,10 @@
                                             @endif
                                         </div>
                                         <div class="product-content text-center">
+                                            <a href="{{ route('admin.edit-product', $mule->uid) }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
                                             <h4><a data-toggle="modal" data-target="#exampleModal" href="#">
                                                     {{ucwords($mule->name)}} </a></h4>
+                                                    <h5 class="m-0 p-0"> {{$mule->code}} </h5>
                                             <h4 class="text-muted">Size: <span> {{$mule->size}} @if ($mule->stock != 0) /
                                                 </span> Stock: <span> {{$mule->stock}}</span>@endif</h4>
                                             <!-- <div class="product-rating">

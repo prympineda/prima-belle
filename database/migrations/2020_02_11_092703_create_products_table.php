@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('code')->unique();;
             $table->string('name');
             $table->integer('is_active')->default(1);
-            $table->string('description')->nullable();
             $table->integer('size')->unsigned();
             $table->integer('price')->unsigned();
             $table->integer('old_price')->nullable();

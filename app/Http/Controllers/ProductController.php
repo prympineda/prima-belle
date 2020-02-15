@@ -50,7 +50,6 @@ class ProductController extends Controller
         $validatorrr = Validator::make($request->all(), [
             'code' => 'required|unique:products',
             'name' => 'required',
-            'description' => 'required',
             'sc_id' => 'required',
             'stock' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
@@ -71,7 +70,6 @@ class ProductController extends Controller
             'uid' => \Str::uuid(),
             'code' => strtoupper($request->code),
             'name' => $request->name,
-            'description' => $request->description,
             'sc_id' => $request->sc_id,
             'size' => $request->size,
             'price' => $request->price,
@@ -87,13 +85,13 @@ class ProductController extends Controller
         ActivityLog::create([
             'uid' => \Str::uuid(),
             'user_id' => Auth::user()->id,
-            'action' => 'Add Product - "' . ucwords($request->name) . '(' .$request->code. ')"'
+            'action' => 'Add Product - "' . ucwords($request->name) . ' (' .$request->code. ')"'
         ]);
 
        $notif = Notification::create([
             'uid' => \Str::uuid(),
             'title' => 'Add Product - ',
-            'message' => 'Add Product - "' . ucwords($request->name) . '(' .$request->code. ')"'
+            'message' => 'Add Product - "' . ucwords($request->name) . ' (' .$request->code. ')"'
         ]);
 
         $users = User::where('is_active', 1)->get();
@@ -104,8 +102,6 @@ class ProductController extends Controller
                 'user_id' => $user->id
             ]);
         }
-        
-
         
         return redirect()->back()->with('success', 'Successfully Added Product');
     }
@@ -150,7 +146,6 @@ class ProductController extends Controller
         $validatorrr = Validator::make($request->all(), [
             'code' => 'required',
             'name' => 'required',
-            'description' => 'required',
             'sc_id' => 'required',
             'stock' => 'required|numeric',
             'price' => 'required|numeric|min:0',
@@ -174,7 +169,6 @@ class ProductController extends Controller
        $product->update([
             'code' => strtoupper($request->code),
             'name' => $request->name,
-            'description' => $request->description,
             'sc_id' => $request->sc_id,
             'size' => $request->size,
             'price' => $request->price,
@@ -236,6 +230,12 @@ class ProductController extends Controller
         return view('product.doll-shoes', compact('doll_shoes'));
     }
 
+    public function viewAllProducts()
+    {
+        $all_products = Product::where('is_active', 1)->orderBy('created_at', 'desc')->get();
+        return view('product.all-products', compact('all_products'));
+    }
+
     public function viewMules()
     {
         $mules = Product::where('sc_id', 4)->where('is_active', 1)->get();
@@ -258,5 +258,11 @@ class ProductController extends Controller
     {
         $birks = Product::where('sc_id', 5)->where('is_active', 1)->get();
         return view('product.birks', compact('birks'));
+    }
+
+    public function viewSwenSoleDollShoes()
+    {
+        $ssd = Product::where('sc_id', 6)->where('is_active', 1)->get();
+        return view('product.view-swen-sole-doll-shoes', compact('ssd'));
     }
 }
